@@ -6,9 +6,7 @@ export default function TextBox(props) {
     //creating a state using {useState}
     const [text, setText] = useState('Enter text here');
     //clearing textBox
-    const handleClearText = () => {
-        setText('');
-    };
+
     const handleUpperCaseBtn = () => {
         let newText = text.toUpperCase();
         // console.log("handleUpperCaseBtn: " + text + " => " + newText);
@@ -18,10 +16,26 @@ export default function TextBox(props) {
         let newText = text.toLowerCase();
         setText(newText);
     }
+    const handleRemoveSpace = () => {
+        let newText = text.replace(/\s+/g, ' ').trim();
+        setText(newText);
+    }
+    const handleCapitalise = () => {
+
+    }
+    const handleCopyClipboard = () => {
+        let newText = document.getElementById("myBox");
+        newText.select();
+        navigator.clipboard.writeText(newText.value);
+    }
+    const handleClearText = () => {
+        setText('');
+    };
     const handleOnChange = (event) => {
         // console.log("handleOnChange");
         setText(event.target.value);
     };
+
     //count words
     const wordCount = (value) => {
         return value.replace(/\./g, '')
@@ -37,7 +51,10 @@ export default function TextBox(props) {
                     <textarea className="form-control" value={text} onClick={handleClearText} onChange={handleOnChange} id="myBox" rows="8"></textarea>
                 </div>
                 <button className="btn btn-primary " onClick={handleUpperCaseBtn}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-3" onClick={handleLowerCaseBtn}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-2" onClick={handleLowerCaseBtn}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-2" onClick={handleRemoveSpace}>Remove Extra Spaces</button>
+                <button className="btn btn-primary mx-2" onClick={handleCapitalise}>Capitalise</button>
+                <button className="btn btn-primary mx-2" onClick={handleCopyClipboard}>Copy to Clipboard</button>
                 <button className="btn btn-danger mx-2" onClick={handleClearText}>Clear Text</button>
             </div>
             <div className="container my-3" >

@@ -15,14 +15,14 @@ export default function About() {
                 backgroundColor: 'white',
                 border: '1px sol id white'
             });
-            setBtnText("Enable Light Mode");
+            setBtnText("Enable Dark Mode");
         }
         else {
             setmyStyle({
                 color: 'white',
                 backgroundColor: '#202020',
             });
-            setBtnText("Enable Light Mode")
+            setBtnText("Enable light Mode")
         }
     };
     return (
